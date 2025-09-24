@@ -1,0 +1,23 @@
+# Dockerfile.middleware
+FROM node:18
+
+WORKDIR /usr/src/app
+
+# Copiar package.json y package-lock.json
+COPY package*.json ./
+
+# Instalar dependencias
+RUN npm install
+
+# Copiar el resto de la aplicación
+COPY . .
+
+# Descargar wait-for-it para esperar a Kafka
+RUN apt-get update && apt-get install -y curl && \
+    curl -o /usr/src/app/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && \
+    chmod +x /usr/src/app/wait-for-it.sh
+
+EXPOSE 5000
+
+# Ejecutar middleware solo cuando Kafka esté disponible
+CMD ["/usr/src/app/wait-for-it.sh", "kafka:9092", "--", "node", "callback.js"]

@@ -1,0 +1,10 @@
+{
+  "resourceType": "Subscription",
+  "status": "active",
+  "criteria": "Patient?",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "http://host.docker.internal:5000/callback",
+    "payload": "application/fhir+json"
+  }
+}

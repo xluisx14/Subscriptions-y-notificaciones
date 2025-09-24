@@ -1,0 +1,13 @@
+{
+  "name": "parcial1-2",
+  "version": "1.0.0",
+  "main": "callback.js",
+  "scripts": {
+    "start": "node callback.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "kafkajs": "^2.2.4"
+  }
+}

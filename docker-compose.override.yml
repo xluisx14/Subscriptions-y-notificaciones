@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  middleware:
+    build:
+      context: .
+      dockerfile: Dockerfile.middleware
+    container_name: middleware
+    ports:
+      - "5000:5000"
+    depends_on:
+      - kafka
+    networks:
+      - default

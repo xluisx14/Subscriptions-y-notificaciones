@@ -1,0 +1,10 @@
+docker compose down -v
+./setup.sh
+
+
+docker compose exec kafka kafka-console-producer.sh --topic prueba --bootstrap-server kafka:9092
+
+ese para escribir
+
+
+docker compose exec kafka kafka-console-consumer.sh --topic prueba --bootstrap-server kafka:9092 --from-beginning
